@@ -1,0 +1,72 @@
+@startuml
+
+Personnage *-- Pecheur
+Personnage *-- Pnj 
+
+class Personnage {
+nom : String 
+emplacement : Case
+
+parler() : String
+}
+
+
+class Pecheur {
+outils : Objet
+}
+
+class Pnj {
+}
+
+class Objet {
+nom : String
+emplacementX : float
+emplacementY : float
+}
+
+class Partie {
+    pecheur : Pecheur
+    objet : Objet
+    plateau : Plateau
+    timer : float
+}
+
+class Plateau {
+plateau : Case[][]
+hauteur : int
+largeur : int
+
+
+initialiser()
+afficher
+
+}
+
+class InteractionPersonnage {
+perso1 : Personnage
+perso2 : Personnage
+
+parler()
+}
+
+class InteractionOjet {
+perso : Personnage
+objet : Objet
+
+recuperer()
+
+}
+
+class Case {
+personnage : Personnage
+objet : Objet
+empX : float
+case  : Int[][]
+
+estOccupe()
+
+}
+
+@enduml
+
+
