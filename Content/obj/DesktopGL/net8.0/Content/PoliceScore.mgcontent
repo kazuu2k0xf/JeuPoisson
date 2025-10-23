@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>/home/k/kernoub/Téléchargements/FishGame/Content/PoliceScore.spritefont</SourceFile>
+  <SourceTime>2025-10-23T14:17:17.020574+02:00</SourceTime>
+  <DestFile>/home/k/kernoub/Téléchargements/FishGame/Content/bin/DesktopGL/Content/PoliceScore.xnb</DestFile>
+  <DestTime>2025-10-23T14:17:24.349572+02:00</DestTime>
+  <Importer>FontDescriptionImporter</Importer>
+  <ImporterTime>2025-06-02T12:31:02+02:00</ImporterTime>
+  <Processor>FontDescriptionProcessor</Processor>
+  <ProcessorTime>2025-06-02T12:31:02+02:00</ProcessorTime>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

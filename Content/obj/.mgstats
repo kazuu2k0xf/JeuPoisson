@@ -1,0 +1,6 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"/home/k/kernoub/Téléchargements/FishGame/Content/aaa.png","/home/k/kernoub/Téléchargements/FishGame/Content/bin/aaa.xnb","TextureProcessor","Texture2DContent",141269,486485,0,1772671
+"/home/k/kernoub/Téléchargements/FishGame/Content/pecheur.png","/home/k/kernoub/Téléchargements/FishGame/Content/bin/pecheur.xnb","TextureProcessor","Texture2DContent",169437,997889,0,064696
+"/home/k/kernoub/Téléchargements/FishGame/Content/poisson.png","/home/k/kernoub/Téléchargements/FishGame/Content/bin/poisson.xnb","TextureProcessor","Texture2DContent",91610,997889,0,0750394
+"/home/k/kernoub/Téléchargements/FishGame/Content/Wall.png","/home/k/kernoub/Téléchargements/FishGame/Content/bin/Mur.xnb","TextureProcessor","Texture2DContent",82147,3841685,0,2053787
+"/home/k/kernoub/Téléchargements/FishGame/Content/wood.png","/home/k/kernoub/Téléchargements/FishGame/Content/bin/wood.xnb","TextureProcessor","Texture2DContent",670812,7502485,0,4084292

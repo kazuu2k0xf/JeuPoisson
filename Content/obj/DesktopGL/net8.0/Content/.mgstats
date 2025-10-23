@@ -1,0 +1,7 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"/home/k/kernoub/Téléchargements/FishGame/Content/aaa.png","/home/k/kernoub/Téléchargements/FishGame/Content/bin/DesktopGL/Content/aaa.xnb","TextureProcessor","Texture2DContent",141269,486485,0.2803994
+"/home/k/kernoub/Téléchargements/FishGame/Content/pecheur.png","/home/k/kernoub/Téléchargements/FishGame/Content/bin/DesktopGL/Content/pecheur.xnb","TextureProcessor","Texture2DContent",169437,997889,0.0680466
+"/home/k/kernoub/Téléchargements/FishGame/Content/poisson.png","/home/k/kernoub/Téléchargements/FishGame/Content/bin/DesktopGL/Content/poisson.xnb","TextureProcessor","Texture2DContent",91610,997889,0.0602625
+"/home/k/kernoub/Téléchargements/FishGame/Content/PoliceScore.spritefont","/home/k/kernoub/Téléchargements/FishGame/Content/bin/DesktopGL/Content/PoliceScore.xnb","FontDescriptionProcessor","SpriteFontContent",2199,21529,0.2539847
+"/home/k/kernoub/Téléchargements/FishGame/Content/Wall.png","/home/k/kernoub/Téléchargements/FishGame/Content/bin/DesktopGL/Content/Mur.xnb","TextureProcessor","Texture2DContent",82147,3841685,0.188992
+"/home/k/kernoub/Téléchargements/FishGame/Content/wood.png","/home/k/kernoub/Téléchargements/FishGame/Content/bin/DesktopGL/Content/wood.xnb","TextureProcessor","Texture2DContent",670812,7502485,0.3821699
