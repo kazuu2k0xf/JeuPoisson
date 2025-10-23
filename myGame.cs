@@ -15,7 +15,7 @@ public enum GameState
 }
 public class myGame : Game
 {
-    private GraphicsDeviceManager _graphics;
+    public static GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private Sprite _personnage;
     private Sprite _poisson;
@@ -56,6 +56,8 @@ public class myGame : Game
     private int _finX;          
     private int _finY;          
     
+    Camera _camera;
+    
     private KeyboardState _previousKeyboardState;
     
     
@@ -65,15 +67,19 @@ public class myGame : Game
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
+        
+        Window.AllowUserResizing = true;
      
     }
 
     protected override void Initialize()
     {
        
-        _graphics.PreferredBackBufferWidth = GridColumns * tileWidth; 
-        _graphics.PreferredBackBufferHeight = GridRows * tileHeight; 
+        //_graphics.PreferredBackBufferWidth = tileWidth * 2; 
+        //_graphics.PreferredBackBufferHeight = tileHeight * 2; 
         _graphics.ApplyChanges();
+        
+        _camera = new Camera();
         
         _previousKeyboardState = Keyboard.GetState();
         
@@ -144,11 +150,7 @@ public class myGame : Game
         arbreCollision[7, 0] = true;
         arbreCollision[1, 1] = true;
         arbreCollision[2, 1] = true;
-
-
         
-
-
 
         for (int x = 0; x < columns; x++)
         {
@@ -209,6 +211,7 @@ protected override void Update(GameTime gameTime)
         
         int targetGridX = _joueurX;
         int targetGridY = _joueurY;
+        _camera.follow(_personnage);
 
         if (currentKeyboardState.IsKeyDown(Keys.Up) && _previousKeyboardState.IsKeyUp(Keys.Up)) targetGridY--;
         if (currentKeyboardState.IsKeyDown(Keys.Down) && _previousKeyboardState.IsKeyUp(Keys.Down)) targetGridY++;
@@ -224,12 +227,15 @@ protected override void Update(GameTime gameTime)
                 {
                     _joueurX = targetGridX;
                     _joueurY = targetGridY;
+                    _camera.follow(_personnage);
                     _mouvementsRestants--;
                 }
             }
         }
-        
-        _personnage.Position = new Vector2(_joueurX * tileWidth, _joueurY * tileHeight);
+
+        float centrerX = (_joueurX * tileWidth) + (tileWidth / 2f);
+        float centrerY = (_joueurY * tileHeight) + (tileHeight / 2f);
+        _personnage.Position = new Vector2(centrerX, centrerY);
         _personnage.Update(gameTime); 
 
        //victoire ou défaite
@@ -267,7 +273,8 @@ protected override void Draw(GameTime gameTime)
         GraphicsDevice.Clear(Color.CornflowerBlue);
         
         
-        _spriteBatch.Begin(samplerState: SamplerState.PointClamp, blendState: BlendState.AlphaBlend);
+        //_spriteBatch.Begin(samplerState: SamplerState.PointClamp, blendState: BlendState.AlphaBlend);
+        _spriteBatch.Begin(transformMatrix: _camera.Transform, samplerState: SamplerState.PointClamp);
         
         // Boucles pour dessiner la grille  8 PAR 8
         for (int x = 0; x < columns; x++)

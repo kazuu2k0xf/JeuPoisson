@@ -76,3 +76,4 @@ C:/Users/laf06/Downloads/FishGame-master/FishGame-master/bin/Debug/net8.0/Conten
 /home/k/kernoub/Téléchargements/FishGame/obj/Debug/net8.0/FishGame.csproj.CopyComplete
 /home/k/kernoub/Téléchargements/FishGame/obj/Debug/net8.0/FishGame.genruntimeconfig.cache
 /home/k/kernoub/Téléchargements/FishGame/obj/Debug/net8.0/ref/FishGame.dll
+/home/k/kernoub/Téléchargements/FishGame/obj/Debug/net8.0/FishGame.sourcelink.json

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FishGame")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+06befa061bf363f72d3c60071f428d956982ab88")]
 [assembly: System.Reflection.AssemblyProductAttribute("FishGame")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FishGame")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
