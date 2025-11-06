@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/home/k/kernoub/Téléchargements/FishGame/Content/pecheur.png</SourceFile>
-  <SourceTime>2025-10-22T21:46:12+02:00</SourceTime>
-  <DestFile>/home/k/kernoub/Téléchargements/FishGame/Content/bin/DesktopGL/Content/pecheur.xnb</DestFile>
-  <DestTime>2025-10-23T14:10:25.235602+02:00</DestTime>
+  <SourceFile>C:/Users/laf06/RiderProjects/JeuPoisson/Content/pecheur.png</SourceFile>
+  <SourceTime>2025-10-24T19:50:08.175431+02:00</SourceTime>
+  <DestFile>C:/Users/laf06/RiderProjects/JeuPoisson/Content/bin/DesktopGL/Content/pecheur.xnb</DestFile>
+  <DestTime>2025-10-24T19:53:41.930241+02:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2025-06-02T12:31:02+02:00</ImporterTime>
+  <ImporterTime>2025-10-20T16:25:32+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2025-06-02T12:31:02+02:00</ProcessorTime>
+  <ProcessorTime>2025-10-20T16:25:32+02:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>

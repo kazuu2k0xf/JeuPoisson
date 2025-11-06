@@ -4,12 +4,12 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>/home/k/kernoub/Téléchargements/FishGame/Content/aaa.png</File>
-    <File>/home/k/kernoub/Téléchargements/FishGame/Content/Wall.png</File>
-    <File>/home/k/kernoub/Téléchargements/FishGame/Content/wood.png</File>
-    <File>/home/k/kernoub/Téléchargements/FishGame/Content/pecheur.png</File>
-    <File>/home/k/kernoub/Téléchargements/FishGame/Content/poisson.png</File>
-    <File>/home/k/kernoub/Téléchargements/FishGame/Content/PoliceScore.spritefont</File>
+    <File>C:/Users/laf06/RiderProjects/JeuPoisson/Content/aaa.png</File>
+    <File>C:/Users/laf06/RiderProjects/JeuPoisson/Content/Wall.png</File>
+    <File>C:/Users/laf06/RiderProjects/JeuPoisson/Content/wood.png</File>
+    <File>C:/Users/laf06/RiderProjects/JeuPoisson/Content/pecheur.png</File>
+    <File>C:/Users/laf06/RiderProjects/JeuPoisson/Content/poisson.png</File>
+    <File>C:/Users/laf06/RiderProjects/JeuPoisson/Content/PoliceScore.spritefont</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

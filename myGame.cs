@@ -4,6 +4,8 @@ using FishGame.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.IO;
+using System.Xml.Linq;
 
 namespace FishGame;
 
@@ -97,69 +99,81 @@ public class myGame : Game
          
          _tileset = new Tileset(_tilesetTexture, tileWidth, tileHeight);
          
-         _joueurX = 5; 
-         _joueurY = 1; 
          
-         _mouvementsRestants = 30;
+         // lecture du fichier xml
+         string xmlPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Niveau1.xml");
+         XDocument doc = XDocument.Load(xmlPath);
          
-
+         var general = doc.Root.Element("General");
+         // recupere les information des attribut  du fichier xml et les assigne a des variables 
+         _joueurX = (int)general.Element("Joueur").Attribute("x");
+         _joueurY = (int)general.Element("Joueur").Attribute("y");
+     
+         _poissonX = (int)general.Element("Poisson").Attribute("x");
+         _poissonY = (int)general.Element("Poisson").Attribute("y");
+     
+         _finX = (int)general.Element("Fin").Attribute("x");
+         _finY = (int)general.Element("Fin").Attribute("y");
+         
+         _mouvementsRestants = (int)general.Element("Pas");
+         
          Vector2 startPosition = new Vector2(_joueurX * tileWidth, _joueurY * tileHeight);
-         
-         // cree le personnage à cette position
          _personnage = new Sprite(personnage, startPosition, 70,7,4);
          
          
-         _poissonX = 7; 
-         _poissonY = 2; 
+ 
          Vector2 startPositionPoisson = new Vector2(_poissonX * tileWidth, _poissonY * tileHeight);
-         
-
-         
          _poisson = new Sprite(poisson, startPositionPoisson, 70, 1, 1);
+         
          _poissonVisible = true;
          _joueurAPoisson = false;
          
-         _finX = 7;
-         _finY = 7;
 
          _personnage.SetFrame(0);
-         
          _currentState = GameState.Playing;
          
-         InitializeTileMap();
+         InitializeTileMap(doc);
     } 
-    private void InitializeTileMap()
+    private void InitializeTileMap(XDocument doc)
     {
-        columns = GridColumns;
-        rows = GridRows;
-        
+        columns = GridColumns; 
+        rows = GridRows;       
+    
         _tileMap = new Tile[columns, rows]; 
         arbreCollision = new bool[columns, rows];
         
+        var lignes = doc.Root.Element("Carte").Element("Collision").Elements("Ligne");
+    
+        int yCourant = 0;
+        foreach (var ligne in lignes)
+        {
+
+            if (yCourant >= rows) break; 
         
-        arbreCollision[0, 0] = true;
-        arbreCollision[1, 0] = true;
-        arbreCollision[2, 0] = true;
-        arbreCollision[3, 0] = true;
-        arbreCollision[0, 1] = true;
-        arbreCollision[0, 2] = true;
-        arbreCollision[0, 6] = true;
-        arbreCollision[1, 7] = true;
-        arbreCollision[0, 7] = true;
-        arbreCollision[6, 0] = true;
-        arbreCollision[7, 0] = true;
-        arbreCollision[1, 1] = true;
-        arbreCollision[2, 1] = true;
-        
+            string data = ligne.Value;
+            int x = 0;
+            foreach (char c in data)
+            {
+
+                if (x >= columns) break; 
+            
+                if (c == 'C')
+                {
+                    arbreCollision[x, yCourant] = true;
+                }
+                x++;
+            }
+            yCourant++;
+        }
+
+
 
         for (int x = 0; x < columns; x++)
         {
             for (int y = 0; y < rows; y++) 
             {
-                int tileIndex = (y * GridRows) + x;
+                int tileIndex = (y * columns) + x;
                 Vector2 position = new Vector2(x * tileWidth, y * tileHeight);
-                
-
                 _tileMap[x, y] = _tileset.GetTile(tileIndex, position);
             }
         }
@@ -211,7 +225,6 @@ protected override void Update(GameTime gameTime)
         
         int targetGridX = _joueurX;
         int targetGridY = _joueurY;
-        _camera.follow(_personnage);
 
         if (currentKeyboardState.IsKeyDown(Keys.Up) && _previousKeyboardState.IsKeyUp(Keys.Up)) targetGridY--;
         if (currentKeyboardState.IsKeyDown(Keys.Down) && _previousKeyboardState.IsKeyUp(Keys.Down)) targetGridY++;
@@ -236,6 +249,7 @@ protected override void Update(GameTime gameTime)
         float centrerX = (_joueurX * tileWidth) + (tileWidth / 2f);
         float centrerY = (_joueurY * tileHeight) + (tileHeight / 2f);
         _personnage.Position = new Vector2(centrerX, centrerY);
+        _camera.follow(_personnage);
         _personnage.Update(gameTime); 
 
        //victoire ou défaite
@@ -293,7 +307,9 @@ protected override void Draw(GameTime gameTime)
             _poisson.Draw(_spriteBatch);
         }
         
-       
+        _spriteBatch.End();
+        
+        _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
         
         
         string textePas = $"Pas restants : {_mouvementsRestants}";
@@ -338,8 +354,8 @@ protected override void Draw(GameTime gameTime)
             _spriteBatch.DrawString(_policeScore, texteRelancer, posRelancer, Color.White);
             
         }
-        
         _spriteBatch.End();
+        
         base.Draw(gameTime);
     }
 }

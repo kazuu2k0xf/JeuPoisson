@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Niveau>
+
+    <General>
+        <Joueur x="5" y="1" />
+        <Poisson x="7" y="2" />
+        <Fin x="7" y="7" />
+        <Pas>15</Pas>
+    </General>
+
+    <Carte>
+        <Collision>
+            <Ligne>CCCCC  C</Ligne>
+            <Ligne>C C      </Ligne>
+            <Ligne>C        </Ligne>
+            <Ligne>         </Ligne>
+            <Ligne>         </Ligne>
+            <Ligne>         </Ligne>
+            <Ligne>C        </Ligne>
+            <Ligne>CC       </Ligne>
+        </Collision>
+    </Carte>
+
+</Niveau>
