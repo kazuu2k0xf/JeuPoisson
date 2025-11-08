@@ -5,7 +5,7 @@
         <Joueur x="5" y="1" />
         <Poisson x="7" y="2" />
         <Fin x="7" y="7" />
-        <Pas>15</Pas>
+        <Pas>30</Pas>
     </General>
 
     <Carte>
