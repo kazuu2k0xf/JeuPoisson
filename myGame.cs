@@ -97,20 +97,20 @@ public class myGame : Game
          doc.Load(xmlPath);
          
          
-         var joueurNode = doc.GetElementsByTagName("Joueur")[0];
-         int joueurX = int.Parse(joueurNode.Attributes["x"].Value);
-         int joueurY = int.Parse(joueurNode.Attributes["y"].Value);
+         var joueurXML = doc.GetElementsByTagName("Joueur")[0];
+         int joueurX = int.Parse(joueurXML.Attributes["x"].Value);
+         int joueurY = int.Parse(joueurXML.Attributes["y"].Value);
          
-         var poissonNode = doc.GetElementsByTagName("Poisson")[0];
-         int poissonX = int.Parse(poissonNode.Attributes["x"].Value);
-         int poissonY = int.Parse(poissonNode.Attributes["y"].Value);
+         var poissonXML = doc.GetElementsByTagName("Poisson")[0];
+         int poissonX = int.Parse(poissonXML.Attributes["x"].Value);
+         int poissonY = int.Parse(poissonXML.Attributes["y"].Value);
          
-         var finNode = doc.GetElementsByTagName("Fin")[0];
-         _finX = int.Parse(finNode.Attributes["x"].Value);
-         _finY = int.Parse(finNode.Attributes["y"].Value);
+         var finXML = doc.GetElementsByTagName("Fin")[0];
+         _finX = int.Parse(finXML.Attributes["x"].Value);
+         _finY = int.Parse(finXML.Attributes["y"].Value);
          
-         var pasNode = doc.GetElementsByTagName("Pas")[0];
-         _mouvementsRestants = int.Parse(pasNode.InnerText);
+         var pasXML = doc.GetElementsByTagName("Pas")[0];
+         _mouvementsRestants = int.Parse(pasXML.InnerText);
          
          
          Sprite playerSprite = new Sprite(personnageTexture, Vector2.Zero, 70, 7, 4);
