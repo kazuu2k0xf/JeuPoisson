@@ -9,7 +9,7 @@ using System.Xml;
 
 namespace FishGame;
 
-public enum GameState
+public enum EtatJeu
 {
     Playing,
     GameOver,
@@ -46,7 +46,7 @@ public class myGame : Game
     
     private int _mouvementsRestants;
     
-    private GameState _currentState;
+    private EtatJeu _etatJeu;
     private SpriteFont _policeScore;
     
     private bool _joueurAPoisson; 
@@ -121,7 +121,7 @@ public class myGame : Game
          
          _camera.follow(_pecheur.Sprite);
 
-         _currentState = GameState.Playing;
+         _etatJeu = EtatJeu.Playing;
          
          InitializeTileMap(doc);
     }
@@ -180,22 +180,22 @@ protected override void Update(GameTime gameTime)
         KeyboardState currentKeyboardState = Keyboard.GetState();
 
         
-        switch (_currentState)
+        switch (_etatJeu)
         {
             
-            case GameState.Playing:
+            case EtatJeu.Playing:
                 UpdateJeu(gameTime, currentKeyboardState);
                 break;
             
            
-            case GameState.GameOver:
+            case EtatJeu.GameOver:
                 if (currentKeyboardState.IsKeyDown(Keys.Enter) && _previousKeyboardState.IsKeyUp(Keys.Enter))
                 {
                     LoadContent();
                 }
                 break;
             
-            case GameState.GameWon:
+            case EtatJeu.GameWon:
                 
                 if (currentKeyboardState.IsKeyDown(Keys.Enter) && _previousKeyboardState.IsKeyUp(Keys.Enter))
                 {
@@ -215,13 +215,13 @@ protected override void Update(GameTime gameTime)
         int targetGridX = _pecheur.GridX;
         int targetGridY = _pecheur.GridY;
         
-        // 1. Détecter les touches (SANS appeler .Play())
+
         if (currentKeyboardState.IsKeyDown(Keys.Up) && _previousKeyboardState.IsKeyUp(Keys.Up)) targetGridY--;
         if (currentKeyboardState.IsKeyDown(Keys.Down) && _previousKeyboardState.IsKeyUp(Keys.Down)) targetGridY++;
         if (currentKeyboardState.IsKeyDown(Keys.Left) && _previousKeyboardState.IsKeyUp(Keys.Left)) targetGridX--;
         if (currentKeyboardState.IsKeyDown(Keys.Right) && _previousKeyboardState.IsKeyUp(Keys.Right)) targetGridX++;
         
-        // 2. Vérifier le mouvement
+
         if (targetGridX != _pecheur.GridX || targetGridY != _pecheur.GridY)
         {
             if (targetGridX >= 0 && targetGridX < GridColumns && targetGridY >= 0 && targetGridY < GridRows)
@@ -235,32 +235,30 @@ protected override void Update(GameTime gameTime)
             }
         }
 
-        // 3. Mettre à jour les entités
-        _pecheur.Update(gameTime); // Appelle l'Update (maintenant vide)
+        _pecheur.Update(gameTime); 
         _poisson.Update(gameTime); 
 
-        // 4. VÉRIFICATION DES INTERACTIONS
-        // (Ce code est déjà correct et fonctionne avec la nouvelle classe Player)
+
         
-        // Étape 1: Attraper
+        // attraper
         if (_poisson.estVisible && _pecheur.GridX == _poisson.GridX && _pecheur.GridY == _poisson.GridY)
         {
-            _pecheur.attraperPoisson(); // Appelle la méthode qui fait SetFrame(3)
+            _pecheur.attraperPoisson(); 
             _poisson.poissonAttraper();
             System.Diagnostics.Debug.WriteLine("POISSON ATTRAPÉ !");
         }
             
-        // Étape 2: Gagner
+        // gagner
         if (_pecheur.aPoisson && _pecheur.GridX == _finX && _pecheur.GridY == _finY)
         {
-            _currentState = GameState.GameWon;
-            _pecheur.lacherPoisson(); // Appelle la méthode qui fait SetFrame(0)
+            _etatJeu = EtatJeu.GameWon;
+            _pecheur.lacherPoisson(); // 
         }
             
-        // Étape 3: Perdre
-        if (_mouvementsRestants <= 0 && _currentState == GameState.Playing)
+        // perdu
+        if (_mouvementsRestants <= 0 && _etatJeu == EtatJeu.Playing)
         {
-            _currentState = GameState.GameOver;
+            _etatJeu = EtatJeu.GameOver;
         }
     }
 
@@ -299,7 +297,7 @@ protected override void Update(GameTime gameTime)
             string textePas = $"Pas restants : {_mouvementsRestants}";
             _spriteBatch.DrawString(_policeScore, textePas, new Vector2(10, 10), Color.White);
 
-            if (_currentState == GameState.GameOver)
+            if (_etatJeu == EtatJeu.GameOver)
             {
                 string texteFin = "VOUS AVEZ PLUS DE FORCE";
                 string texteRelancer = "Appuyez sur Entree pour recommencer";
@@ -316,7 +314,7 @@ protected override void Update(GameTime gameTime)
                 _spriteBatch.DrawString(_policeScore, texteFin, posFin, Color.Red);
                 _spriteBatch.DrawString(_policeScore, texteRelancer, posRelancer, Color.White); 
             }
-            else if (_currentState == GameState.GameWon)
+            else if (_etatJeu == EtatJeu.GameWon)
             {
                 string texteFin = "GAGNE !";
                 string texteRelancer = "Appuyez sur Entree pour recommencer";
