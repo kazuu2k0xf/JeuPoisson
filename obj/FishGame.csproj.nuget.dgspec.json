@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\laf06\\RiderProjects\\JeuPoisson\\FishGame.csproj": {}
+    "C:\\Users\\hugom\\RiderProjects\\JeuPoisson\\JeuPoisson\\FishGame.csproj": {}
   },
   "projects": {
-    "C:\\Users\\laf06\\RiderProjects\\JeuPoisson\\FishGame.csproj": {
+    "C:\\Users\\hugom\\RiderProjects\\JeuPoisson\\JeuPoisson\\FishGame.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\laf06\\RiderProjects\\JeuPoisson\\FishGame.csproj",
+        "projectUniqueName": "C:\\Users\\hugom\\RiderProjects\\JeuPoisson\\JeuPoisson\\FishGame.csproj",
         "projectName": "FishGame",
-        "projectPath": "C:\\Users\\laf06\\RiderProjects\\JeuPoisson\\FishGame.csproj",
-        "packagesPath": "C:\\Users\\laf06\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\laf06\\RiderProjects\\JeuPoisson\\obj\\",
+        "projectPath": "C:\\Users\\hugom\\RiderProjects\\JeuPoisson\\JeuPoisson\\FishGame.csproj",
+        "packagesPath": "C:\\Users\\hugom\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hugom\\RiderProjects\\JeuPoisson\\JeuPoisson\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Microsoft Visual Studio 2022\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\laf06\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\hugom\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -64,30 +70,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.21, 8.0.21]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[8.0.21, 8.0.21]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.21, 8.0.21]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.21, 8.0.21]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\laf06\\.dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

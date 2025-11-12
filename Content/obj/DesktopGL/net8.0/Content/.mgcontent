@@ -4,16 +4,20 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/laf06/RiderProjects/JeuPoisson/Content/aaa.png</File>
-    <File>C:/Users/laf06/RiderProjects/JeuPoisson/Content/Wall.png</File>
-    <File>C:/Users/laf06/RiderProjects/JeuPoisson/Content/wood.png</File>
-    <File>C:/Users/laf06/RiderProjects/JeuPoisson/Content/pecheur.png</File>
-    <File>C:/Users/laf06/RiderProjects/JeuPoisson/Content/poisson.png</File>
-    <File>C:/Users/laf06/RiderProjects/JeuPoisson/Content/PoliceScore.spritefont</File>
+    <File>C:/Users/hugom/RiderProjects/JeuPoisson/JeuPoisson/Content/aaa.png</File>
+    <File>C:/Users/hugom/RiderProjects/JeuPoisson/JeuPoisson/Content/Wall.png</File>
+    <File>C:/Users/hugom/RiderProjects/JeuPoisson/JeuPoisson/Content/wood.png</File>
+    <File>C:/Users/hugom/RiderProjects/JeuPoisson/JeuPoisson/Content/pecheur.png</File>
+    <File>C:/Users/hugom/RiderProjects/JeuPoisson/JeuPoisson/Content/poisson.png</File>
+    <File>C:/Users/hugom/RiderProjects/JeuPoisson/JeuPoisson/Content/Jouer.png</File>
+    <File>C:/Users/hugom/RiderProjects/JeuPoisson/JeuPoisson/Content/Quitter.png</File>
+    <File>C:/Users/hugom/RiderProjects/JeuPoisson/JeuPoisson/Content/PoliceScore.spritefont</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
     <File>Mur.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

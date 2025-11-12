@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/hugom/RiderProjects/JeuPoisson/JeuPoisson/Content/aaa.png</SourceFile>
-  <SourceTime>2025-11-12T21:14:39.8486941+01:00</SourceTime>
-  <DestFile>C:/Users/hugom/RiderProjects/JeuPoisson/JeuPoisson/Content/bin/DesktopGL/Content/aaa.xnb</DestFile>
-  <DestTime>2025-11-12T21:20:11.7646665+01:00</DestTime>
+  <SourceFile>C:/Users/hugom/RiderProjects/JeuPoisson/JeuPoisson/Content/Quitter.png</SourceFile>
+  <SourceTime>2025-11-12T21:48:26.8193211+01:00</SourceTime>
+  <DestFile>C:/Users/hugom/RiderProjects/JeuPoisson/JeuPoisson/Content/bin/DesktopGL/Content/Quitter.xnb</DestFile>
+  <DestTime>2025-11-12T21:49:49.561496+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2025-10-20T16:25:32+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
