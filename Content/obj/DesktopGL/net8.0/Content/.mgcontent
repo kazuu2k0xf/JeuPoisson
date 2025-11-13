@@ -5,18 +5,16 @@
   <Config />
   <SourceFiles>
     <File>/home/k/kernoub/Téléchargements/FishGame/Content/aaa.png</File>
-    <File>/home/k/kernoub/Téléchargements/FishGame/Content/Wall.png</File>
-    <File>/home/k/kernoub/Téléchargements/FishGame/Content/wood.png</File>
     <File>/home/k/kernoub/Téléchargements/FishGame/Content/pecheur.png</File>
     <File>/home/k/kernoub/Téléchargements/FishGame/Content/poisson.png</File>
-    <File>/home/k/kernoub/Téléchargements/FishGame/Content/PoliceScore.spritefont</File>
+    <File>/home/k/kernoub/Téléchargements/FishGame/Content/Wall.png</File>
+    <File>/home/k/kernoub/Téléchargements/FishGame/Content/wood.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File>Mur.png</File>
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>
