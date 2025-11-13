@@ -19,11 +19,10 @@ public class myGame : Game
     private SpriteBatch _spriteBatch;
     private Sprite _personnage;
     private Sprite _poisson;
-    private Texture2D _tilesetTexture;
+    private Texture2D laCarte;
     private Tile[,] _tileMap;
     
     private Tileset _tileset;
-    private int[,] _mapLayout;
 
 
     
@@ -49,14 +48,14 @@ public class myGame : Game
     
     private int _mouvementsRestants;
     
-    private GameState _currentState;
-    private SpriteFont _policeScore;
+    private GameState EtatCourant;
     
     private bool _joueurAPoisson; 
     private int _finX;          
     private int _finY;          
     
-    Camera _camera;
+    //Camera _camera;
+    
     
     private KeyboardState _previousKeyboardState;
     
@@ -69,17 +68,15 @@ public class myGame : Game
         IsMouseVisible = true;
         
         Window.AllowUserResizing = true;
-     
     }
 
     protected override void Initialize()
     {
        
-        //_graphics.PreferredBackBufferWidth = tileWidth * 2; 
-        //_graphics.PreferredBackBufferHeight = tileHeight * 2; 
+
         _graphics.ApplyChanges();
         
-        _camera = new Camera();
+        //_camera = new Camera();
         
         _previousKeyboardState = Keyboard.GetState();
         
@@ -90,12 +87,12 @@ public class myGame : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
          Texture2D personnage = Content.Load<Texture2D>("pecheur");
-         _tilesetTexture = Content.Load<Texture2D>("wood");
+         laCarte = Content.Load<Texture2D>("wood");
          Texture2D poisson = Content.Load<Texture2D>("poisson");
          
-         _policeScore = Content.Load<SpriteFont>("PoliceScore");
          
-         _tileset = new Tileset(_tilesetTexture, tileWidth, tileHeight);
+         
+         _tileset = new Tileset(laCarte, tileWidth, tileHeight);
          
          _joueurX = 5; 
          _joueurY = 1; 
@@ -103,19 +100,19 @@ public class myGame : Game
          _mouvementsRestants = 30;
          
 
-         Vector2 startPosition = new Vector2(_joueurX * tileWidth, _joueurY * tileHeight);
+         Vector2 posDepartJoueur = new Vector2(_joueurX * tileWidth, _joueurY * tileHeight);
          
          // cree le personnage à cette position
-         _personnage = new Sprite(personnage, startPosition, 70,7,4);
+         _personnage = new Sprite(personnage, posDepartJoueur, 70,7,4);
          
          
          _poissonX = 7; 
          _poissonY = 2; 
-         Vector2 startPositionPoisson = new Vector2(_poissonX * tileWidth, _poissonY * tileHeight);
+         Vector2 posPoisson = new Vector2(_poissonX * tileWidth, _poissonY * tileHeight);
          
 
          
-         _poisson = new Sprite(poisson, startPositionPoisson, 70, 1, 1);
+         _poisson = new Sprite(poisson, posPoisson, 70, 1, 1);
          _poissonVisible = true;
          _joueurAPoisson = false;
          
@@ -124,7 +121,7 @@ public class myGame : Game
 
          _personnage.SetFrame(0);
          
-         _currentState = GameState.Playing;
+         EtatCourant = GameState.Playing;
          
          InitializeTileMap();
     } 
@@ -159,7 +156,6 @@ public class myGame : Game
                 int tileIndex = (y * GridRows) + x;
                 Vector2 position = new Vector2(x * tileWidth, y * tileHeight);
                 
-
                 _tileMap[x, y] = _tileset.GetTile(tileIndex, position);
             }
         }
@@ -176,7 +172,7 @@ protected override void Update(GameTime gameTime)
         KeyboardState currentKeyboardState = Keyboard.GetState();
 
         
-        switch (_currentState)
+        switch (EtatCourant)
         {
             
             case GameState.Playing:
@@ -209,30 +205,31 @@ protected override void Update(GameTime gameTime)
     private void UpdateJeu(GameTime gameTime, KeyboardState currentKeyboardState)
     {
         
-        int targetGridX = _joueurX;
-        int targetGridY = _joueurY;
-        _camera.follow(_personnage);
+        int posJoueurX = _joueurX;
+        int posJoueurY = _joueurY;
+        //_camera.follow(_personnage);
 
-        if (currentKeyboardState.IsKeyDown(Keys.Up) && _previousKeyboardState.IsKeyUp(Keys.Up)) targetGridY--;
-        if (currentKeyboardState.IsKeyDown(Keys.Down) && _previousKeyboardState.IsKeyUp(Keys.Down)) targetGridY++;
-        if (currentKeyboardState.IsKeyDown(Keys.Left) && _previousKeyboardState.IsKeyUp(Keys.Left)) targetGridX--;
-        if (currentKeyboardState.IsKeyDown(Keys.Right) && _previousKeyboardState.IsKeyUp(Keys.Right)) targetGridX++;
+        if (currentKeyboardState.IsKeyDown(Keys.Up) && _previousKeyboardState.IsKeyUp(Keys.Up)) posJoueurY--;
+        if (currentKeyboardState.IsKeyDown(Keys.Down) && _previousKeyboardState.IsKeyUp(Keys.Down)) posJoueurY++;
+        if (currentKeyboardState.IsKeyDown(Keys.Left) && _previousKeyboardState.IsKeyUp(Keys.Left)) posJoueurX--;
+        if (currentKeyboardState.IsKeyDown(Keys.Right) && _previousKeyboardState.IsKeyUp(Keys.Right)) posJoueurX++;
         
         // SI Deplacement
-        if (targetGridX != _joueurX || targetGridY != _joueurY)
+        if (posJoueurX != _joueurX || posJoueurY != _joueurY)
         {
-            if (targetGridX >= 0 && targetGridX < GridColumns && targetGridY >= 0 && targetGridY < GridRows)
+            if (posJoueurX >= 0 && posJoueurX < GridColumns && posJoueurY >= 0 && posJoueurY < GridRows)
             {
-                if (arbreCollision[targetGridX, targetGridY] == false)
+                if (arbreCollision[posJoueurX, posJoueurY] == false)
                 {
-                    _joueurX = targetGridX;
-                    _joueurY = targetGridY;
-                    _camera.follow(_personnage);
+                    _joueurX = posJoueurX;
+                    _joueurY = posJoueurY;
+                    //_camera.follow(_personnage);
                     _mouvementsRestants--;
                 }
             }
         }
-
+        
+        //Centrer le joueur sur sa tuile actuel
         float centrerX = (_joueurX * tileWidth) + (tileWidth / 2f);
         float centrerY = (_joueurY * tileHeight) + (tileHeight / 2f);
         _personnage.Position = new Vector2(centrerX, centrerY);
@@ -255,15 +252,15 @@ protected override void Update(GameTime gameTime)
         {
             if (_joueurX == _finX && _joueurY == _finY)
             {
-                _currentState = GameState.GameWon;
+                EtatCourant = GameState.GameWon;
                 _joueurAPoisson = false;
             }
         }
             
        //PERDU
-        if (_mouvementsRestants <= 0 && _currentState == GameState.Playing)
+        if (_mouvementsRestants <= 0 && EtatCourant == GameState.Playing)
         {
-            _currentState = GameState.GameOver; 
+            EtatCourant = GameState.GameOver; 
         }
         
     }
@@ -273,8 +270,8 @@ protected override void Draw(GameTime gameTime)
         GraphicsDevice.Clear(Color.CornflowerBlue);
         
         
-        //_spriteBatch.Begin(samplerState: SamplerState.PointClamp, blendState: BlendState.AlphaBlend);
-        _spriteBatch.Begin(transformMatrix: _camera.Transform, samplerState: SamplerState.PointClamp);
+        
+        _spriteBatch.Begin( samplerState: SamplerState.PointClamp);
         
         // Boucles pour dessiner la grille  8 PAR 8
         for (int x = 0; x < columns; x++)
@@ -293,51 +290,7 @@ protected override void Draw(GameTime gameTime)
             _poisson.Draw(_spriteBatch);
         }
         
-       
         
-        
-        string textePas = $"Pas restants : {_mouvementsRestants}";
-        _spriteBatch.DrawString(_policeScore, textePas, new Vector2(10, 10), Color.White);
-
-       
-        if (_currentState == GameState.GameOver)
-        {
-            string texteFin = "VOUS AVEZ PLUS DE FORCE";
-            string texteRelancer = "Appuyez sur Entree pour recommencer";
-            
-            
-            Vector2 posFin = new Vector2(
-                _graphics.PreferredBackBufferWidth / 2f - _policeScore.MeasureString(texteFin).X / 2f,
-                _graphics.PreferredBackBufferHeight / 2f - 50
-            );
-            Vector2 posRelancer = new Vector2(
-                _graphics.PreferredBackBufferWidth / 2f - _policeScore.MeasureString(texteRelancer).X / 2f,
-                _graphics.PreferredBackBufferHeight / 2f
-            );
-
-            _spriteBatch.DrawString(_policeScore, texteFin, posFin, Color.Red);
-            _spriteBatch.DrawString(_policeScore, texteRelancer, posRelancer, Color.White); 
-        }
-        else if (_currentState == GameState.GameWon)
-        {
-            
-            string texteFin = "GAGNE !";
-            string texteRelancer = "Appuyez sur Entree pour recommencer";
-
-           
-            Vector2 posFin = new Vector2(
-                _graphics.PreferredBackBufferWidth / 2f - _policeScore.MeasureString(texteFin).X / 2f,
-                _graphics.PreferredBackBufferHeight / 2f - 50
-            );
-            Vector2 posRelancer = new Vector2(
-                _graphics.PreferredBackBufferWidth / 2f - _policeScore.MeasureString(texteRelancer).X / 2f,
-                _graphics.PreferredBackBufferHeight / 2f
-            );
-
-            _spriteBatch.DrawString(_policeScore, texteFin, posFin, Color.LawnGreen);
-            _spriteBatch.DrawString(_policeScore, texteRelancer, posRelancer, Color.White);
-            
-        }
         
         _spriteBatch.End();
         base.Draw(gameTime);

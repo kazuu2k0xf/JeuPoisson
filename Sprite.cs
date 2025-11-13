@@ -12,10 +12,10 @@ public class Sprite
     private Color _color = Color.White;
 
     
-    private readonly int _columns;
-    private readonly int _rows;
-    private readonly int _frameWidth;
-    private readonly int _frameHeight;
+    private  int _columns;
+    private int _rows;
+    private int _frameWidth;
+    private  int _frameHeight;
     private int _currentFrame;
 
     
